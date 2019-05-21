@@ -6,15 +6,16 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    public const float FPS_MODIFIER = 61;
+
     //System variables
     private Player player;
     public string currentScene;
     public string nextScene;
     public static bool isPaused = false;
-    //private GameObject pauseMenu;
-    //private GameObject levelClearMenu;
     public GameObject pauseMenu;
     public GameObject levelClearMenu;
+    
 
     public Text endGameStage;
     public Text endGameTime;
@@ -28,6 +29,7 @@ public class LevelManager : MonoBehaviour
     private float startTime;
     public float playerTime;
     public Text timeText;
+    public Text coinText;
     private string timeConverted;
     private bool levelEnded = false;
     
@@ -38,12 +40,11 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
-        startTime = Time.time;
+        
         playerCoins = 0;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        //pauseMenu = Resources.FindObjectsOfTypeAll<Canvas>()[2].gameObject;
-        //levelClearMenu = Resources.FindObjectsOfTypeAll<Canvas>()[1].gameObject;
+
    
     }
 
@@ -53,8 +54,13 @@ public class LevelManager : MonoBehaviour
             Reload();
         }
 
+        if(!player.hasMoved){
+            startTime = Time.time;
+        }
+
         if(!levelEnded){
             DrawTimer();
+            DrawCoinCounter();
 
             if(Input.GetKeyDown(KeyCode.Escape)){
                 if(isPaused){
@@ -113,6 +119,10 @@ public class LevelManager : MonoBehaviour
             timeText.text = timeConverted;
     }
     
+    public void DrawCoinCounter(){
+        coinText.text = "Coins: " + playerCoins;
+    }
+
     public void Resume()
     {
         isPaused = false;
@@ -135,6 +145,7 @@ public class LevelManager : MonoBehaviour
 
     public void ExitToMenu(){
         Debug.Log("Going to menu..");
+        Application.Quit();
         Resume();
     }
 

@@ -12,12 +12,13 @@ public class CoinBehave : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
+        coinSpeed *= LevelManager.FPS_MODIFIER;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0,0,coinSpeed);
+        transform.Rotate(0,0,coinSpeed*Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other) {

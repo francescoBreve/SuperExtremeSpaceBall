@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private Rigidbody playerBody;
     private Camera playerCamera;
     public bool IsGrounded;
+    public bool hasMoved = false;
     
 
     // Start is called before the first frame update
@@ -15,6 +16,8 @@ public class Player : MonoBehaviour
     {
         playerBody = GetComponentInChildren<Rigidbody>();
         playerCamera = GetComponentInChildren<Camera>();
+
+        playerSpeed *= LevelManager.FPS_MODIFIER;
     }
 
     // Update is called once per frame
@@ -30,37 +33,45 @@ public class Player : MonoBehaviour
         if (IsGrounded) {
             if (Input.GetKey(KeyCode.W))
             {
-                playerBody.AddForce(forward.normalized * playerSpeed);
+                playerBody.AddForce(Time.deltaTime*forward.normalized * playerSpeed);
+                hasMoved = true;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                playerBody.AddForce(back.normalized * playerSpeed);
+                playerBody.AddForce(Time.deltaTime*back.normalized * playerSpeed);
+                hasMoved = true;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                playerBody.AddForce(right.normalized * playerSpeed);
+                playerBody.AddForce(Time.deltaTime*right.normalized * playerSpeed);
+                hasMoved = true;
             }
             if (Input.GetKey(KeyCode.A))
             {
-                playerBody.AddForce(left.normalized * playerSpeed);
+                playerBody.AddForce(Time.deltaTime*left.normalized * playerSpeed);
+                hasMoved = true;
             }
 
         }  else  {
             if (Input.GetKey(KeyCode.W))
             {
-                playerBody.AddForce(forward.normalized * playerSpeed* 0.3f);
+                playerBody.AddForce(Time.deltaTime*forward.normalized * playerSpeed* 0.3f);
+                hasMoved = true;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                playerBody.AddForce(back.normalized * playerSpeed * 0.3f);
+                playerBody.AddForce(Time.deltaTime*back.normalized * playerSpeed * 0.3f);
+                hasMoved = true;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                playerBody.AddForce(right.normalized * playerSpeed * 0.3f);
+                playerBody.AddForce(Time.deltaTime*right.normalized * playerSpeed * 0.3f);
+                hasMoved = true;
             }
             if (Input.GetKey(KeyCode.A))
             {
-                playerBody.AddForce(left.normalized * playerSpeed * 0.3f);
+                playerBody.AddForce(Time.deltaTime*left.normalized * playerSpeed * 0.3f);
+                hasMoved = true;
             }
         }
     }

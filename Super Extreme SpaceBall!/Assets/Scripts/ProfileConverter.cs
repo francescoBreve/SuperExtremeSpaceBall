@@ -5,26 +5,31 @@ using UnityEngine;
 
 public class ProfileConverter
 {
-    private string playerName;
-    private string password;
-    private int gamesPlayed;
 
-    private string[] stringTimeRecord;
-    private string[] stringCoinRecord;
-    private string[] stringScoreRecord;
+    public ConvertedProfile Convert(Profile profile){
+        ConvertedProfile toReturn = new ConvertedProfile();
+        toReturn.playerName = profile.PlayerName;
+        toReturn.password = profile.Password;
+        toReturn.gamesPlayed = profile.GamesPlayed;
 
-    public void ConvertProfile(Profile profile){
         int numberOfLevels = profile.playerRecordsTime.Length;
         for(int i = 1; i<=numberOfLevels; i++) {
-            stringTimeRecord[i] = recordToString(profile.playerRecordsTime[i]);
+            toReturn.stringTimeRecord[i] = recordToString(profile.playerRecordsTime[i]);
         }
         for(int i = 1; i<=numberOfLevels; i++) {
-            stringCoinRecord[i] = recordToString(profile.playerRecordsCoin[i]);
+            toReturn.stringCoinRecord[i] = recordToString(profile.playerRecordsCoin[i]);
         }
-         for(int i = 1; i<=numberOfLevels; i++) {
-            stringScoreRecord[i] = recordToString(profile.playerRecordsScore[i]);
+        for(int i = 1; i<=numberOfLevels; i++) {
+            toReturn.stringScoreRecord[i] = recordToString(profile.playerRecordsScore[i]);
         }
-    }   
+        return toReturn;
+    }
+
+    public Profile RevertProfile(ProfileConverter toRevert){
+        Profile x;
+        x = new Profile(playerName, password);
+        return x;
+    }
 
     public string recordToString(Record x){
         string toReturn = "";

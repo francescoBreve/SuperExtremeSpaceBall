@@ -11,18 +11,22 @@ public class Profile
     public Record[] playerRecordsCoin;
     public Record[] playerRecordsScore;
 
+    public string PlayerName { get => playerName; set => playerName = value; }
+    public string Password { get => password; set => password = value; }
+    public int GamesPlayed { get => gamesPlayed; set => gamesPlayed = value; }
+
     public Profile(string name , string pass)
     {
-        playerName = name;
-        password = pass;
-        gamesPlayed = 0;
+        PlayerName = name;
+        Password = pass;
+        GamesPlayed = 0;
         playerRecordsTime[0] = new Record(0, 0, 0, 0);
         playerRecordsCoin[0] = new Record(0, 0, 0, 0);
         playerRecordsScore[0] = new Record(0, 0, 0, 0);
     }
 
     public void addGame(Record x){
-        gamesPlayed ++;
+        GamesPlayed ++;
         if(x.LevelTime < playerRecordsTime[x.LevelID].LevelTime){
             playerRecordsTime[x.LevelID] = x;
         }

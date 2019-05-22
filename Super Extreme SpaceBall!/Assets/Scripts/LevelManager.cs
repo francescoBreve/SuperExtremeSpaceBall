@@ -60,7 +60,7 @@ public class LevelManager : MonoBehaviour
 
         if(!levelEnded){
             DrawTimer();
-            DrawCoinCounter();
+            DrawCoinCounter();  
 
             if(Input.GetKeyDown(KeyCode.Escape)){
                 if(isPaused){
@@ -160,6 +160,7 @@ public class LevelManager : MonoBehaviour
     }
 
     private int CalcuateScore(){
-        return 1;
+        float toReturn = ((1+playerCoins)*1000)/playerTime;
+        return (int) toReturn;
     }
 }

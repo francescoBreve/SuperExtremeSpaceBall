@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         Vector3 baseforward = transform.position - playerCamera.transform.position;
+        Vector3 baseforward = transform.position - playerCamera.transform.position;
         Vector3 forward = new Vector3(baseforward.x, 0.0f, baseforward.z);
         Vector3 baseBack = playerCamera.transform.position - transform.position;
         Vector3 back = new Vector3(baseBack.x, 0.0f, baseBack.z);

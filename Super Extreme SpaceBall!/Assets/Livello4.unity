@@ -1155,7 +1155,7 @@ PrefabInstance:
     - target: {fileID: 6745909938223284680, guid: 33219df492e14c24492051a352d13e5d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6745909938223284680, guid: 33219df492e14c24492051a352d13e5d,
         type: 3}
@@ -4135,7 +4135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4889481791975622, guid: 262e629051fa1a144b5e56772d3b0d49, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4889481791975622, guid: 262e629051fa1a144b5e56772d3b0d49, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6120,7 +6120,7 @@ PrefabInstance:
     - target: {fileID: 6490558184975509797, guid: e146e3aa792154345be18817e74b0e26,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6490558184975509797, guid: e146e3aa792154345be18817e74b0e26,
         type: 3}
@@ -6146,6 +6146,11 @@ PrefabInstance:
         type: 3}
       propertyPath: nextScene
       value: Livello1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6490558184975509798, guid: e146e3aa792154345be18817e74b0e26,
+        type: 3}
+      propertyPath: currentLevelId
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6490558184648906856, guid: e146e3aa792154345be18817e74b0e26,
         type: 3}

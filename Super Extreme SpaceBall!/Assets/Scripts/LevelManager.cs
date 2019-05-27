@@ -10,13 +10,15 @@ public class LevelManager : MonoBehaviour
 
     //System variables
     private Player player;
+    private Profile playerProfile;
+    public int currentLevelId;
     public string currentScene;
     public string nextScene;
     public static bool isPaused = false;
     public GameObject pauseMenu;
     public GameObject levelClearMenu;
     
-
+    //Endgame Text variables
     public Text endGameStage;
     public Text endGameTime;
     public Text endGameCoin;
@@ -28,7 +30,7 @@ public class LevelManager : MonoBehaviour
     public int playerCoins;
     private float startTime; //tempo inizio timer
     public float playerTime; //Tempoo effettivo
-    public Text timeText;
+    public Text timeText;   
     public Text coinText;
     private string timeConverted;
     private bool levelEnded = false;
@@ -40,8 +42,8 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
-        
         playerCoins = 0;
+        playerProfile = SaveSystem.LoadProfile();
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
 
@@ -84,8 +86,13 @@ public class LevelManager : MonoBehaviour
         endGameStage.text = currentScene;
         endGameTime.text = "Time: " + timeConverted;
         endGameCoin.text = "Coins: " + playerCoins;
-
         endGameScore.text = "Score: " + CalcuateScore();
+
+        Record newGame = new Record(currentLevelId, playerTime, playerCoins, CalcuateScore());
+        playerProfile.addGame(newGame);
+        playerProfile.lastUnlocked++;
+        SaveSystem.SaveProfile(playerProfile);
+        
     }
 
     private void DrawTimer(){
@@ -144,9 +151,10 @@ public class LevelManager : MonoBehaviour
     }
 
     public void ExitToMenu(){
-        Debug.Log("Going to menu..");
-        Application.Quit();
-        Resume();
+        isPaused = false;
+        Time.timeScale = 1.0f;
+        pauseMenu.SetActive(false);
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void Reload(){

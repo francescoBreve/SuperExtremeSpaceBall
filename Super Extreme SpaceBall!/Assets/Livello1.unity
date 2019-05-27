@@ -1662,6 +1662,11 @@ PrefabInstance:
       propertyPath: nextScene
       value: Livello2
       objectReference: {fileID: 0}
+    - target: {fileID: 6490558184975509798, guid: e146e3aa792154345be18817e74b0e26,
+        type: 3}
+      propertyPath: currentLevelId
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e146e3aa792154345be18817e74b0e26, type: 3}
 --- !u!1001 &1448359389

@@ -26,8 +26,8 @@ public class LevelManager : MonoBehaviour
     //Gameplay variables
     public float loseHeight = -5;
     public int playerCoins;
-    private float startTime;
-    public float playerTime;
+    private float startTime; //tempo inizio timer
+    public float playerTime; //Tempoo effettivo
     public Text timeText;
     public Text coinText;
     private string timeConverted;
@@ -42,8 +42,8 @@ public class LevelManager : MonoBehaviour
         player = FindObjectOfType<Player>();
         
         playerCoins = 0;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
 
    
     }

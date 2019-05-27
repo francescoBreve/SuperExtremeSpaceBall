@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     private Camera playerCamera;
     public bool IsGrounded;
     public bool hasMoved = false;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -29,24 +28,25 @@ public class Player : MonoBehaviour
         Vector3 back = new Vector3(baseBack.x, 0.0f, baseBack.z);
         Vector3 left = Vector3.Cross(forward, Vector3.up);
         Vector3 right = Vector3.Cross(back, Vector3.up);
-
+    
         if (IsGrounded) {
-            if (Input.GetKey(KeyCode.W))
-            {
+            if (Input.GetAxisRaw("Vertical") == 1)
+            {   
+               
                 playerBody.AddForce(Time.deltaTime*forward.normalized * playerSpeed);
                 hasMoved = true;
             }
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetAxisRaw("Vertical") == -1)
             {
                 playerBody.AddForce(Time.deltaTime*back.normalized * playerSpeed);
                 hasMoved = true;
             }
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetAxisRaw("Horizontal") == 1)
             {
                 playerBody.AddForce(Time.deltaTime*right.normalized * playerSpeed);
                 hasMoved = true;
             }
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetAxisRaw("Horizontal") == -1)
             {
                 playerBody.AddForce(Time.deltaTime*left.normalized * playerSpeed);
                 hasMoved = true;
@@ -80,6 +80,8 @@ public class Player : MonoBehaviour
         if(other.CompareTag("Finish")){
            FindObjectOfType<LevelManager>().FinishLevel();
         }
+
+
     }
 
 

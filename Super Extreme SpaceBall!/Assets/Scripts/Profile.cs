@@ -4,39 +4,65 @@ using UnityEngine;
 
 public class Profile
 {
-    private string playerName;
-    private string password;
-    private int gamesPlayed;
-    public Record[] playerRecordsTime; //array[i] = level id "i", array[1] = level 1
-    public Record[] playerRecordsCoin;
-    public Record[] playerRecordsScore;
+    //--------
+    public string playerName;
+    public string password;
+    public int gamesPlayed;
+    public int lastUnlocked;
+    public List<Record> timeRecords = new List<Record>();
+    public List<Record> coinRecords  =  new List<Record>();
+    public List<Record> scoreRecords =  new List<Record>();
 
-    public string PlayerName { get => playerName; set => playerName = value; }
-    public string Password { get => password; set => password = value; }
-    public int GamesPlayed { get => gamesPlayed; set => gamesPlayed = value; }
-
-    public Profile(string name , string pass)
-    {
-        PlayerName = name;
-        Password = pass;
-        GamesPlayed = 0;
-        playerRecordsTime[0] = new Record(0, 0, 0, 0);
-        playerRecordsCoin[0] = new Record(0, 0, 0, 0);
-        playerRecordsScore[0] = new Record(0, 0, 0, 0);
+    public Profile(string name, string pass){
+        playerName = name;
+        password = pass;
+        gamesPlayed = 0;
+        timeRecords.Add(new Record(0, 12.2f , 5, 1230));
+        coinRecords.Add(new Record(0, 12.2f , 5, 1230));
+        scoreRecords.Add(new Record(0, 12.2f , 5, 1230));
     }
 
     public void addGame(Record x){
-        GamesPlayed ++;
-        if(x.LevelTime < playerRecordsTime[x.LevelID].LevelTime){
-            playerRecordsTime[x.LevelID] = x;
+        if(lastUnlocked >= x.LevelID){
+            if( x.LevelTime <= timeRecords[x.LevelID].LevelTime){
+                timeRecords[x.LevelID] = x;
+            }
+            if( x.LevelCoins >= coinRecords[x.LevelID].LevelCoins){
+                coinRecords[x.LevelID] = x;
+            }
+            if( x.LevelScore >= scoreRecords[x.LevelID].LevelScore){
+                scoreRecords[x.LevelID] = x;
+            }
+        } else if(lastUnlocked < x.LevelID){
+            lastUnlocked = x.LevelID;
+            timeRecords.Add(x);
+            coinRecords.Add(x);
+            scoreRecords.Add(x);
         }
-        if(x.LevelCoins > playerRecordsCoin[x.LevelID].LevelCoins){
-            playerRecordsCoin[x.LevelID] = x;
-        }
-        if(x.LevelScore > playerRecordsScore[x.LevelID].LevelScore){
-            playerRecordsScore[x.LevelID] = x;
-        }
-        
     }
-  
+
+    private string recordToString(Record x){
+        string toReturn;
+        toReturn = x.LevelID + "!" + x.LevelTime + "!" + x.LevelCoins + "!" + x.LevelScore;
+        return toReturn;
+    }
+
+    
+
+    public ConvertedProfile Convert(){
+        ConvertedProfile toReturn = new ConvertedProfile();
+        toReturn.playerName = this.playerName;
+        toReturn.password = this.password;
+        toReturn.gamesPlayed = this.gamesPlayed;
+        toReturn.lastUnlocked = this.lastUnlocked;
+        for(int i = 0; i <= this.lastUnlocked; i++){
+            toReturn.stringTimeRecord.Add(recordToString(timeRecords[i]));
+            toReturn.stringCoinRecord.Add(recordToString(coinRecords[i]));
+            toReturn.stringScoreRecord.Add(recordToString(scoreRecords[i]));
+        }
+        return toReturn;
+    }
+
+
+
 }

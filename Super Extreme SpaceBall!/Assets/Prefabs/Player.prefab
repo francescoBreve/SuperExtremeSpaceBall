@@ -4871,6 +4871,8 @@ MonoBehaviour:
   playerSpeed: 20
   IsGrounded: 0
   hasMoved: 0
+  playerFx: {fileID: 0}
+  coinSound: {fileID: 8300000, guid: 875b5f1e8b3f57a479203853ab7ecc04, type: 3}
 --- !u!54 &6745909938223284682
 Rigidbody:
   m_ObjectHideFlags: 0

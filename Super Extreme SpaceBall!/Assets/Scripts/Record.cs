@@ -20,4 +20,8 @@ public class Record
     public float LevelTime { get => levelTime; set => levelTime = value; }
     public float LevelCoins { get => levelCoins; set => levelCoins = value; }
     public float LevelScore { get => levelScore; set => levelScore = value; }
+
+    public string toString(){
+        return "" + levelID + "," + levelTime+ "," + levelCoins + "," + levelScore;  
+    }
 }

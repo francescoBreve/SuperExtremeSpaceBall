@@ -17,9 +17,10 @@ public class Profile
         playerName = name;
         password = pass;
         gamesPlayed = 0;
-        timeRecords.Add(new Record(0, 12.2f , 5, 1230));
-        coinRecords.Add(new Record(0, 12.2f , 5, 1230));
-        scoreRecords.Add(new Record(0, 12.2f , 5, 1230));
+        lastUnlocked = 0;
+        timeRecords.Add(new Record(0, 0 , 0, 0));
+        coinRecords.Add(new Record(0, 0 , 0, 0));
+        scoreRecords.Add(new Record(0, 0 , 0, 0));
     }
 
     public void addGame(Record x){

@@ -10,10 +10,12 @@ public static class SaveSystem {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/profile.sav";
         FileStream stream = new FileStream(path, FileMode.Create);
-
+        
         ConvertedProfile data = profile.Convert();
-
+        
         formatter.Serialize(stream, data);
+        System.IO.File.WriteAllText(Application.persistentDataPath +"/NotConvertedprofile.txt", data.toString());
+
         stream.Close();
     }
 

@@ -34,4 +34,18 @@ public class ConvertedProfile
         }
         return toReturn;
     }
+
+    public string toString(){
+        string toReturn;
+        toReturn = "playerName:"+playerName + System.Environment.NewLine + "password:"+password + System.Environment.NewLine + "gamesPlayed:"+ gamesPlayed + System.Environment.NewLine + "lastUnlocked:"+ lastUnlocked + System.Environment.NewLine;
+        for(int i = 0; i<= this.lastUnlocked; i++){
+            toReturn += "TimeRecord[" + i + "]:" + stringTimeRecord[i];
+            toReturn +=System.Environment.NewLine;
+            toReturn += "CoinRecord[" + i + "]:" +stringCoinRecord[i];
+            toReturn +=System.Environment.NewLine;
+            toReturn += "ScoreRecord[" + i + "]:" +stringScoreRecord[i];
+            toReturn +=System.Environment.NewLine;
+        }
+        return toReturn;
+    }
 }

@@ -23,6 +23,6 @@ public class Record
     public float LevelScore { get => levelScore; set => levelScore = value; }
 
     public string toString(){
-        return "" + levelID + "," + levelTime+ "," + levelCoins + "," + levelScore;  
+        return "" + levelID + "!" + levelTime+ "!" + levelCoins + "!" + levelScore;  
     }
 }

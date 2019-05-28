@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
+
 public class Profile
 {
     //--------
@@ -47,8 +47,8 @@ public class Profile
 
     private string recordToString(Record x){
         string toReturn;
-        Debug.Log(x.toString());
-        toReturn = x.LevelID + "!" + x.LevelTime + "!" + x.LevelCoins + "!" + x.LevelScore;
+        Debug.Log("recordTo string:" + x.toString());
+        toReturn = x.toString() + System.Environment.NewLine;
         return toReturn;
     }
 

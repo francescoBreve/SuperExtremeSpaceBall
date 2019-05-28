@@ -10,9 +10,9 @@ public static class SaveSystem {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/profile.sav";
         FileStream stream = new FileStream(path, FileMode.Create);
-        
-        ConvertedProfile data = profile.Convert();
-        
+       
+        //ConvertedProfile data = profile.Convert();
+        Profile data = profile;
         formatter.Serialize(stream, data);
         System.IO.File.WriteAllText(Application.persistentDataPath +"/NotConvertedprofile.txt", data.toString());
 
@@ -25,10 +25,12 @@ public static class SaveSystem {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
-            ConvertedProfile tmp = formatter.Deserialize(stream) as ConvertedProfile;
+            //ConvertedProfile tmp = formatter.Deserialize(stream) as ConvertedProfile;
+            Profile tmp = formatter.Deserialize(stream) as Profile;
             stream.Close();
 
-            Profile toReturn = tmp.Revert();
+            //Profile toReturn = tmp.Revert();
+            Profile toReturn = tmp;
             return toReturn;
 
         } else {

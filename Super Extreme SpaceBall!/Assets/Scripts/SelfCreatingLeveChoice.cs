@@ -28,17 +28,23 @@ public class SelfCreatingLeveChoice : MonoBehaviour
         prof = FindObjectOfType<MainMenu>().playerProfile;
     }
 
-    public void DrawPlayWindow(){
-        
-        Debug.Log(prof);
+    public void DrawPlayWindow(){        
         prof = FindObjectOfType<MainMenu>().playerProfile;
-        if(levelId <= prof.lastUnlocked){
+        if(levelId < prof.levelToPlay){
             recordPanel.SetActive(true);
             notUnlockedPanel.SetActive(false);
             leveText.text = levelName;
             timeText.text = "Best Time: " + prof.timeRecords[levelId].LevelTime;
             coinText.text = "Max Coin: " + prof.coinRecords[levelId].LevelCoins;
             scoreText.text = "Best Score: " + prof.scoreRecords[levelId].LevelScore;
+            x.levelToLoad = levelName;
+        } else if(levelId == prof.levelToPlay) {
+            recordPanel.SetActive(true);
+            notUnlockedPanel.SetActive(false);
+            leveText.text = levelName;
+            timeText.text = "Best Time: " + "not yet done";
+            coinText.text = "Max Coin: " +  "not yet done";
+            scoreText.text = "Best Score: " + "not yet done";
             x.levelToLoad = levelName;
         } else {
             recordPanel.SetActive(false);

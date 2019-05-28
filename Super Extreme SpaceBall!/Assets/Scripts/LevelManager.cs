@@ -35,9 +35,6 @@ public class LevelManager : MonoBehaviour
     private string timeConverted;
     private bool levelEnded = false;
     
-
-
-
     
     void Start()
     {
@@ -46,6 +43,7 @@ public class LevelManager : MonoBehaviour
         playerProfile = SaveSystem.LoadProfile();
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
+        
 
    
     }
@@ -89,14 +87,13 @@ public class LevelManager : MonoBehaviour
         endGameScore.text = "Score: " + CalcuateScore();
 
         Record newGame = new Record(currentLevelId, playerTime, playerCoins, CalcuateScore());
+        
         playerProfile.addGame(newGame);
-        playerProfile.lastUnlocked++;
-        SaveSystem.SaveProfile(playerProfile);
         
     }
 
     private void DrawTimer(){
-            playerTime = Time.time - startTime;
+            playerTime = Time.time - startTime; 
 
             //int hours = ((int) playerTime/3600);
             int minutes = ((int) playerTime/60);

@@ -37,7 +37,7 @@ public class TestClass : MonoBehaviour
         Debug.Log(playerProfile);
         Debug.Log(playerProfile.playerName);
         Debug.Log(playerProfile.password);
-        for(int i = 0; i<=playerProfile.lastUnlocked; i++){
+        for(int i = 0; i<=playerProfile.levelToPlay; i++){
             Debug.Log(playerProfile.timeRecords[i].LevelID);
             Debug.Log(playerProfile.timeRecords[i].LevelTime);
         }

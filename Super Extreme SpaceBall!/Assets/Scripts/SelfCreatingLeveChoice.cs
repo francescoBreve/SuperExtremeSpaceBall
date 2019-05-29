@@ -34,7 +34,8 @@ public class SelfCreatingLeveChoice : MonoBehaviour
             recordPanel.SetActive(true);
             notUnlockedPanel.SetActive(false);
             leveText.text = levelName;
-            timeText.text = "Best Time: " + prof.timeRecords[levelId].LevelTime;
+            float tmpTime = prof.timeRecords[levelId].LevelTime;
+            timeText.text = "Best Time: " + tmpTime.ToString("f3");
             coinText.text = "Max Coin: " + prof.coinRecords[levelId].LevelCoins;
             scoreText.text = "Best Score: " + prof.scoreRecords[levelId].LevelScore;
             x.levelToLoad = levelName;

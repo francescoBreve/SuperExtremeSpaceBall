@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[System.Serializable]
 public class Profile
 {
     //--------
@@ -23,15 +23,10 @@ public class Profile
         coinRecords.Add(new Record(0, 0 , 0, 0));
         scoreRecords.Add(new Record(0, 0 , 0, 0));
     }
+   
 
     public void addGame(Record x){
-        if(levelToPlay == x.LevelID){
-            Debug.Log("profilo:" + x.toString());
-            levelToPlay++;
-            timeRecords.Add(x);
-            coinRecords.Add(x);
-            scoreRecords.Add(x);
-        } else if(levelToPlay < x.LevelID){
+        if(x.LevelID < levelToPlay){ //se ho già giocato il livello
             if( x.LevelTime <= timeRecords[x.LevelID].LevelTime){
                 timeRecords[x.LevelID] = x;
             }
@@ -42,8 +37,16 @@ public class Profile
                 scoreRecords[x.LevelID] = x;
             }
         }
+        if(x.LevelID == levelToPlay){ //se sto cercando di sbloccare il nuovo livello
+            levelToPlay++;
+            timeRecords.Add(x);
+            coinRecords.Add(x);
+            scoreRecords.Add(x);
+        }
+        gamesPlayed++;
         SaveSystem.SaveProfile(this);
-    }
+    } 
+
 
     private string recordToString(Record x){
         string toReturn;
@@ -53,24 +56,6 @@ public class Profile
     }
 
     
-
-    public ConvertedProfile Convert(){
-        ConvertedProfile toReturn = new ConvertedProfile();
-        toReturn.playerName = this.playerName;
-        toReturn.password = this.password;
-        toReturn.gamesPlayed = this.gamesPlayed;
-        toReturn.levelToPlay = this.levelToPlay;
-        for(int i = 0; i < this.levelToPlay; i++){
-            Debug.Log("Record to string of " + i + ":" + recordToString(timeRecords[i]));
-            toReturn.stringTimeRecord.Add(recordToString(timeRecords[i]));
-            Debug.Log("Record to string of " + i + ":" + recordToString(coinRecords[i]));
-            toReturn.stringCoinRecord.Add(recordToString(coinRecords[i]));
-            Debug.Log("Record to string of " + i + ":" + recordToString(scoreRecords[i]));
-            toReturn.stringScoreRecord.Add(recordToString(scoreRecords[i]));
-        }
-        return toReturn;
-    }
-
     public string toString(){
         string toReturn;
         toReturn = "playerName:"+playerName + System.Environment.NewLine + "password:"+password + System.Environment.NewLine + "gamesPlayed:"+ gamesPlayed + System.Environment.NewLine + "levelToPlay:"+ levelToPlay + System.Environment.NewLine;

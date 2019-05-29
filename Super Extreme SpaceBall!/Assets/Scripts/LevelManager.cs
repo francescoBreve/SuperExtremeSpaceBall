@@ -41,11 +41,9 @@ public class LevelManager : MonoBehaviour
         player = FindObjectOfType<Player>();
         playerCoins = 0;
         playerProfile = SaveSystem.LoadProfile();
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
-   
     }
 
     void Update()
@@ -151,6 +149,8 @@ public class LevelManager : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1.0f;
         pauseMenu.SetActive(false);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("MainMenu");
     }
 

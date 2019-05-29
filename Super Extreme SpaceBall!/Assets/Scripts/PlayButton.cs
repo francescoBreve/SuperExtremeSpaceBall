@@ -8,7 +8,8 @@ public class PlayButton : MonoBehaviour
     public string levelToLoad;
 
     public void loadLevel(){
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         SceneManager.LoadScene(levelToLoad);
-        //Debug.Log(levelToLoad);
     }
 }

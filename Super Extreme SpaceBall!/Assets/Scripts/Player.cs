@@ -31,8 +31,7 @@ public class Player : MonoBehaviour
     
         if (IsGrounded) {
             if (Input.GetAxisRaw("Vertical") == 1)
-            {   
-               
+            {  
                 playerBody.AddForce(Time.deltaTime*forward.normalized * playerSpeed);
                 hasMoved = true;
             }
@@ -53,22 +52,22 @@ public class Player : MonoBehaviour
             }
 
         }  else  {
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetAxisRaw("Vertical") == 1)
             {
                 playerBody.AddForce(Time.deltaTime*forward.normalized * playerSpeed* 0.3f);
                 hasMoved = true;
             }
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetAxisRaw("Vertical") == -1)
             {
                 playerBody.AddForce(Time.deltaTime*back.normalized * playerSpeed * 0.3f);
                 hasMoved = true;
             }
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetAxisRaw("Horizontal") == 1)
             {
                 playerBody.AddForce(Time.deltaTime*right.normalized * playerSpeed * 0.3f);
                 hasMoved = true;
             }
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetAxisRaw("Horizontal") == -1)
             {
                 playerBody.AddForce(Time.deltaTime*left.normalized * playerSpeed * 0.3f);
                 hasMoved = true;

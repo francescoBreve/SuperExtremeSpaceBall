@@ -10,6 +10,7 @@ public class Profile
     public string password;
     public int gamesPlayed;
     public int levelToPlay;
+    public string version;
     public List<Record> timeRecords = new List<Record>();
     public List<Record> coinRecords  =  new List<Record>();
     public List<Record> scoreRecords =  new List<Record>();
@@ -22,6 +23,7 @@ public class Profile
         timeRecords.Add(new Record(0, 0 , 0, 0));
         coinRecords.Add(new Record(0, 0 , 0, 0));
         scoreRecords.Add(new Record(0, 0 , 0, 0));
+        version = "0.5.1";
     }
    
 
@@ -47,18 +49,10 @@ public class Profile
         SaveSystem.SaveProfile(this);
     } 
 
-
-    private string recordToString(Record x){
-        string toReturn;
-        Debug.Log("recordTo string:" + x.toString());
-        toReturn = x.toString() + System.Environment.NewLine;
-        return toReturn;
-    }
-
     
     public string toString(){
         string toReturn;
-        toReturn = "playerName:"+playerName + System.Environment.NewLine + "password:"+password + System.Environment.NewLine + "gamesPlayed:"+ gamesPlayed + System.Environment.NewLine + "levelToPlay:"+ levelToPlay + System.Environment.NewLine;
+        toReturn = "playerName:"+playerName + System.Environment.NewLine + "password:"+password + System.Environment.NewLine +  "GameVersion:" + version + System.Environment.NewLine + "gamesPlayed:"+ gamesPlayed + System.Environment.NewLine + "levelToPlay:"+ levelToPlay + System.Environment.NewLine;
         for(int i = 0; i< this.levelToPlay; i++){
             toReturn += "TimeRecord[" + i + "]:" + timeRecords[i];
             toReturn +=System.Environment.NewLine;

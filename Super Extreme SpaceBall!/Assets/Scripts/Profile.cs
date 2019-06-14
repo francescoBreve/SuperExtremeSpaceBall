@@ -23,7 +23,7 @@ public class Profile
         timeRecords.Add(new Record(0, 0 , 0, 0));
         coinRecords.Add(new Record(0, 0 , 0, 0));
         scoreRecords.Add(new Record(0, 0 , 0, 0));
-        version = "0.5.1";
+        version = "0.5.2";
     }
    
 

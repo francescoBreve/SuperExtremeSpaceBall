@@ -9,3 +9,6 @@ The game is buggy and poorly written but ha some interestings features that can 
 
 A pre-builded version of the game can be downloaded here:
 https://mega.nz/fm/6g11gArY
+
+Save files are stored in the folder:
+ %userprofile%\AppData\LocalLow\DefaultCompany\Super Extreme SpaceBall!

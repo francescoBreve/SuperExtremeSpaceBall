@@ -6,3 +6,6 @@ The game is buggy and poorly written but ha some interestings features that can 
 - A number of premade prefabas to allow quick level creation
 - A save system that saves player's records an times on each level
 - A main menu with a level select screen
+
+A pre-builded version of the game can be downloaded here:
+https://mega.nz/fm/6g11gArY
